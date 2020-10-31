@@ -16,5 +16,5 @@ bind ^C copy main
 bind ^V paste main
 bind ^J fulljustify main
 
-# enable syntax highlighting
-include /usr/local/share/nano/*.nanorc
+# enable syntax highlighting (syntax files not available on CS workstation)
+# include /usr/local/share/nano/*.nanorc
