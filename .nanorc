@@ -1,0 +1,20 @@
+set autoindent
+set backup
+set backupdir ~/.nano-backups
+set softwrap
+set tabsize 4
+set fill -4
+set wordbounds
+set linenumbers
+#set nohelp
+
+bind ^Z undo main
+bind ^Y redo main
+bind ^F whereis main
+bind ^H replace main
+bind ^C copy main
+bind ^V paste main
+bind ^J fulljustify main
+
+# enable syntax highlighting
+include /usr/local/share/nano/*.nanorc
