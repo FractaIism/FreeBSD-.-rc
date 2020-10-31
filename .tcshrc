@@ -1,0 +1,71 @@
+set nobeep
+setenv TERM "xterm-color"
+setenv CLICOLOR "YES"
+setenv LSCOLORS "GxDxFxdxCxDxDxhbadExEc"
+setenv EDITOR nano
+setenv autorehash 1
+
+alias cs "cd \!* && ls"
+alias quit exit
+alias python python3
+
+bindkey '\t' complete-word-fwd
+
+if ( "`hostname | grep .cs.nctu.edu.tw`" != "" ) then	# this is NCTUCS workstation
+
+	setenv PATH "${PATH}:/net/cs/105/0516098:/net/cs/105/0516098/bin"
+	# linux/BSD specific aliases
+	if ( "`hostname | grep bsd`" != "" ) then	# this is BSD
+		alias nanos 'nano `readlink \!:1`'
+		alias ls "ls -laG"
+	else if ( "`hostname | grep linux`" != "" ) then	# this is linux
+		alias ls "ls -lav --color"
+	endif
+
+else	# this is local FreeBSD VM
+
+    alias ls "ls -laG"
+    alias shutdown 'sudo shutdown -p now'
+    alias poweroff 'sudo poweroff'
+    alias reboot 'sudo reboot'
+    alias restart 'sudo reboot'
+    alias nanos 'sudo nano `readlink \!:1`'
+    alias service 'sudo service'
+    alias zpool 'sudo zpool'
+    alias zfs 'sudo zfs'
+    alias chmod 'sudo chmod'
+    alias chown 'sudo chown'
+    alias zbackup 'sudo zbackup'
+
+endif
+
+
+
+# Add these lines to your ~/.cshrc.mine file on the linux grace machines...
+# don't worry too much about what they mean.
+
+# Colors!
+set     red="%{\033[1;31m%}"
+set   green="%{\033[0;32m%}"
+set  yellow="%{\033[1;33m%}"
+set    blue="%{\033[1;34m%}"
+set magenta="%{\033[1;35m%}"
+set    cyan="%{\033[1;36m%}"
+set   white="%{\033[0;37m%}"
+set     end="%{\033[0m%}" # This is needed at the end... :(
+
+# Setting the actual prompt.  I made two separate versions for you to try, pick
+# whichever one you like better, and change the colors as you want.  Just don't
+# mess with the ${end} guy in either line...  Comment out or delete the prompt you don't use.
+
+set prompt="${blue}%n${cyan}@%m ${magenta}%~ ${green}>${end} "
+#set prompt="[${green}%n${yellow}@%m ${white}%~ ]${end} "
+
+# Clean up after ourselves...
+unset red green yellow blue magenta cyan yellow white end
+
+
+#if ( ! $?TMUX ) then
+#	# not in tmux session
+#	tmux attach || tmux new
+#endif
