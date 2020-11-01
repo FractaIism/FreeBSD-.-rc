@@ -1,5 +1,5 @@
 set nobeep
-export LANG "en_US.UTF-8"   # solves tmux border problems (tmux -u is another solution)
+export LANG="en_US.UTF-8"   # solves tmux border problems (tmux -u is another solution)
 alias ls="ls -laG"
 cs() { builtin cd "$1" && ls; }
 
