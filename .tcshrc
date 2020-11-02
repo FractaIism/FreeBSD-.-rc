@@ -4,25 +4,26 @@ setenv CLICOLOR "YES"
 setenv LSCOLORS "GxDxFxdxCxDxDxhbadExEc"
 setenv EDITOR nano
 setenv autorehash 1
+setenv LANG "en_US.UTF-8"   # solves tmux border problems (tmux -u is another solution)
 
 alias cs "cd \!* && ls"
 alias quit exit
 alias python python3
 
-bindkey '\t' complete-word-fwd
+bindkey '\t' complete-word-fwd  # cycle through possible options when completion is ambiguous
 
-if ( "`hostname | grep .cs.nctu.edu.tw`" != "" ) then	# this is NCTUCS workstation
+if ( "`hostname | grep .cs.nctu.edu.tw`" != "" ) then	# for NCTUCS workstation
 
 	setenv PATH "${PATH}:/net/cs/105/0516098:/net/cs/105/0516098/bin"
 	# linux/BSD specific aliases
-	if ( "`hostname | grep bsd`" != "" ) then	# this is BSD
+	if ( "`hostname | grep bsd`" != "" ) then	# for BSD
 		alias nanos 'nano `readlink \!:1`'
 		alias ls "ls -laG"
-	else if ( "`hostname | grep linux`" != "" ) then	# this is linux
+	else if ( "`hostname | grep linux`" != "" ) then	# for linux
 		alias ls "ls -lav --color"
 	endif
 
-else	# this is local FreeBSD VM
+else	# for local FreeBSD VM
 
     alias ls "ls -laG"
     alias shutdown 'sudo shutdown -p now'
@@ -41,10 +42,9 @@ endif
 
 
 
-# Add these lines to your ~/.cshrc.mine file on the linux grace machines...
-# don't worry too much about what they mean.
 
 # Colors!
+
 set     red="%{\033[1;31m%}"
 set   green="%{\033[0;32m%}"
 set  yellow="%{\033[1;33m%}"
@@ -52,18 +52,12 @@ set    blue="%{\033[1;34m%}"
 set magenta="%{\033[1;35m%}"
 set    cyan="%{\033[1;36m%}"
 set   white="%{\033[0;37m%}"
-set     end="%{\033[0m%}" # This is needed at the end... :(
-
-# Setting the actual prompt.  I made two separate versions for you to try, pick
-# whichever one you like better, and change the colors as you want.  Just don't
-# mess with the ${end} guy in either line...  Comment out or delete the prompt you don't use.
+set     end="%{\033[0m%}"   # Reset color
 
 set prompt="${blue}%n${cyan}@%m ${magenta}%~ ${green}>${end} "
 #set prompt="[${green}%n${yellow}@%m ${white}%~ ]${end} "
 
-# Clean up after ourselves...
 unset red green yellow blue magenta cyan yellow white end
-
 
 #if ( ! $?TMUX ) then
 #	# not in tmux session

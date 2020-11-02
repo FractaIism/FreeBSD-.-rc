@@ -13,13 +13,13 @@ set mouse=a         " allow using mouse in all modes
 set whichwrap+=<,>,[,]    " wrap cursor to when reaching end of line
 set backspace=indent,eol,start  " make backspace work in insert mode
 
-color desert
-syntax enable
+color desert    " color theme
+syntax enable   " syntax highlighting
 
-"line number coloring
+" Line number coloring
 highlight LineNr cterm=NONE ctermfg=Green ctermbg=NONE
 
-"Updates vim editor as vimrc is modified
+" Updates vim editor as vimrc is modified
 augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
@@ -30,6 +30,9 @@ if has ("autocmd")
     filetype plugin indent on
 endif
 
-"This unsets the "last search pattern" register by hitting return
+" This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
+
+" Remove trailing spaces on writeout
+autocmd BufWritePre * %s/\s\+$//e
 
