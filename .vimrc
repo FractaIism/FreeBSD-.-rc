@@ -50,7 +50,7 @@ autocmd BufWritePre * %s/\s\+$//e
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
-cnoremap w!! w !sudo tee > /dev/null %
+cnoremap w!! w !sudo tee % > /dev/null
 
 " Disable mouse clicks in vim
 " Why? enabling the mouse makes copy-pasting to other applications harder

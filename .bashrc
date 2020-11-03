@@ -15,6 +15,7 @@ if [ "`hostname|grep .cs.nctu.edu.tw`" == "" ]; then
     alias zfs='sudo zfs'
     alias chmod='sudo chmod'
     alias chown='sudo chown'
+    alias chgrp='sudo chgrp'
     alias zbackup='sudo zbackup'
 fi
 

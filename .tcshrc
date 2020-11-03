@@ -36,6 +36,7 @@ else	# for local FreeBSD VM
     alias zfs 'sudo zfs'
     alias chmod 'sudo chmod'
     alias chown 'sudo chown'
+    alias chgrp 'sudo chgrp'
     alias zbackup 'sudo zbackup'
 
 endif
