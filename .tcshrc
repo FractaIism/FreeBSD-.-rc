@@ -2,8 +2,8 @@ set nobeep
 setenv TERM "xterm-color"
 setenv CLICOLOR "YES"
 setenv LSCOLORS "GxDxFxdxCxDxDxhbadExEc"
-setenv EDITOR nano
-setenv autorehash 1
+setenv EDITOR vim
+setenv autorehash
 setenv LANG "en_US.UTF-8"   # solves tmux border problems (tmux -u is another solution)
 
 alias cs "cd \!* && ls"

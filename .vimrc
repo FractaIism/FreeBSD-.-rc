@@ -12,6 +12,8 @@ set autowrite       " automatically save when window loses focus
 set mouse=a         " allow using mouse in all modes
 set whichwrap+=<,>,[,]    " wrap cursor to when reaching end of line
 set backspace=indent,eol,start  " make backspace work in insert mode
+set visualbell      " disable error sounds
+set t_vb=           " clear visual bell length (disables flashing)
 
 color desert    " color theme
 syntax enable   " syntax highlighting
