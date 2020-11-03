@@ -14,6 +14,14 @@ set whichwrap+=<,>,[,]    " wrap cursor to when reaching end of line
 set backspace=indent,eol,start  " make backspace work in insert mode
 set visualbell      " disable error sounds
 set t_vb=           " clear visual bell length (disables flashing)
+set undolevels=1000 " max number of changes that can be undone)
+set ignorecase      " ignore case in search patterns
+set foldmethod=indent   " enable folding, using indent to define blocks
+set foldlevel=100       " start with all folds open
+
+
+"set scrolloff=999   " Minimal number of screen lines to keep above and below the cursor (use 999 to keep cursor in the middle of the screen)
+"set insertmode      " Makes Vim work like a standard text editor
 
 color desert    " color theme
 syntax enable   " syntax highlighting
@@ -37,4 +45,17 @@ nnoremap <CR> :noh<CR><CR>
 
 " Remove trailing spaces on writeout
 autocmd BufWritePre * %s/\s\+$//e
+
+" disable newline-continuation of comments (useful when pasting code)
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cnoremap w!! w !sudo tee > /dev/null %
+
+" Disable mouse clicks in vim
+" Why? enabling the mouse makes copy-pasting to other applications harder
+" Enabling mouse but disabling mouse clicks preserves scrolling functionality
+map <LeftMouse> <Nop>; map! <LeftMouse> <Nop>
+map <RightMouse> <Nop>; map! <RightMouse> <Nop>
+map <MiddleMouse> <Nop>; map! <MiddleMouse> <Nop>
 

@@ -1,7 +1,7 @@
 set nobeep
 export LANG="en_US.UTF-8"   # solves tmux border problems (tmux -u is another solution)
 alias ls="ls -laG"
-cs() { builtin cd "$1" && ls; }
+cs() { if [ -n "$1" ]; then builtin cd "$1"; else builtin cd ~; fi && ls; }
 
 # if not on NCTUCS workstation
 if [ "`hostname|grep .cs.nctu.edu.tw`" == "" ]; then
