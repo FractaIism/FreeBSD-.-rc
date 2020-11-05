@@ -1,5 +1,7 @@
 set nobeep
+bind "TAB:menu-complete"
 export LANG="en_US.UTF-8"   # solves tmux border problems (tmux -u is another solution)
+
 alias ls="ls -laG"
 cs() { if [ -n "$1" ]; then builtin cd "$1"; else builtin cd ~; fi && ls; }
 
