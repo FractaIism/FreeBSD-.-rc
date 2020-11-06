@@ -24,32 +24,37 @@ fi
 
 
 # Colors!
+# put variables in subshell function to prevent namespace pollution
 
-black="\e[30m"
-red="\e[31m"
-green="\e[32m"
-yellow="\e[33m"
-blue="\e[34m"
-magenta="\e[35m"
-cyan="\e[36m"
-lightgray="\e[37m"
-darkgray="\e[90m"
-lightred="\e[91m"
-lightgreen="\e[92m"
-lightyellow="\e[93m"
-lightblue="\e[94m"
-lightmagenta="\e[95m"
-lightcyan="\e[96m"
-white="\e[97m"
+color_prompt() {(
+    black="\e[30m"
+    red="\e[31m"
+    green="\e[32m"
+    yellow="\e[33m"
+    blue="\e[34m"
+    magenta="\e[35m"
+    cyan="\e[36m"
+    lightgray="\e[37m"
+    darkgray="\e[90m"
+    lightred="\e[91m"
+    lightgreen="\e[92m"
+    lightyellow="\e[93m"
+    lightblue="\e[94m"
+    lightmagenta="\e[95m"
+    lightcyan="\e[96m"
+    white="\e[97m"
 
-bold="\e[1m"
-reset="\e[0m"
+    bold="\e[1m"
+    reset="\e[0m"
 
-#export PS1="\[\e[34;1m\]\u\[\e[36m\]@\H \[\e[35m\]\w \[\e[32m\]$ \[\e[0m\]"
-if [ "$(whoami)" = "root" ]; then
-    #export PS1="${lightred}\u${lightgreen}@\h ${lightyellow}\w ${lightmagenta}$ ${reset}"
-    export PS1="${lightred}\u${lightcyan}@\h ${lightmagenta}\w ${lightgreen}$ ${reset}"
-else
-    #export PS1="${lightcyan}\u${lightgreen}@\h ${lightyellow}\w ${lightmagenta}$ ${reset}"
-    export PS1="${lightblue}\u${lightcyan}@\h ${lightmagenta}\w ${lightgreen}$ ${reset}"
-fi
+    #export PS1="\[\e[34;1m\]\u\[\e[36m\]@\H \[\e[35m\]\w \[\e[32m\]$ \[\e[0m\]"
+    if [ "$(whoami)" = "root" ]; then
+        #export PS1="${lightred}\u${lightgreen}@\h ${lightyellow}\w ${lightmagenta}$ ${reset}"
+        echo "${lightred}\u${lightcyan}@\h ${lightmagenta}\w ${lightgreen}$ ${reset}"
+    else
+        #export PS1="${lightcyan}\u${lightgreen}@\h ${lightyellow}\w ${lightmagenta}$ ${reset}"
+        echo "${lightblue}\u${lightcyan}@\h ${lightmagenta}\w ${lightgreen}$ ${reset}"
+    fi
+)}
+
+export PS1="$(color_prompt)"
