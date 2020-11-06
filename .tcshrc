@@ -4,11 +4,12 @@ setenv CLICOLOR "YES"
 setenv LSCOLORS "GxDxFxdxCxDxDxhbadExEc"
 setenv EDITOR vim
 setenv autorehash
-setenv LANG "en_US.UTF-8"   # solves tmux border problems (tmux -u is another solution)
+#setenv LANG "en_US.UTF-8"   # solves tmux border problems (tmux -u is another solution)
 
 alias cs "cd \!* && ls"
 alias quit exit
 alias python python3
+alias tmux 'tmux -u'
 
 bindkey '\t' complete-word-fwd  # cycle through possible options when completion is ambiguous
 
@@ -46,21 +47,20 @@ endif
 
 # Colors!
 
-set     red="%{\033[1;31m%}"
-set   green="%{\033[0;32m%}"
-set  yellow="%{\033[1;33m%}"
-set    blue="%{\033[1;34m%}"
-set magenta="%{\033[1;35m%}"
-set    cyan="%{\033[1;36m%}"
-set   white="%{\033[0;37m%}"
-set     end="%{\033[0m%}"   # Reset color
+set        red = "%{\033[1;31m%}"
+set      green = "%{\033[1;32m%}"
+set     yellow = "%{\033[1;33m%}"
+set       blue = "%{\033[1;34m%}"
+set    magenta = "%{\033[1;35m%}"
+set       cyan = "%{\033[1;36m%}"
+set      white = "%{\033[0;37m%}"
+set        end = "%{\033[0m%}"   # Reset color
 
-set prompt="${blue}%n${cyan}@%m ${magenta}%~ ${green}>${end} "
-#set prompt="[${green}%n${yellow}@%m ${white}%~ ]${end} "
+if ( "`whoami`" == "root" ) then
+    set prompt="${red}%n${cyan}@%m ${magenta}%~ ${green}>${end} "
+else
+    set prompt="${blue}%n${cyan}@%m ${magenta}%~ ${green}>${end} "
+    # set prompt="[${green}%n${yellow}@%m ${white}%~ ]${end} "
+endif
 
 unset red green yellow blue magenta cyan yellow white end
-
-#if ( ! $?TMUX ) then
-#	# not in tmux session
-#	tmux attach || tmux new
-#endif

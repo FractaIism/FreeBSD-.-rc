@@ -3,6 +3,7 @@ bind "TAB:menu-complete"
 export LANG="en_US.UTF-8"   # solves tmux border problems (tmux -u is another solution)
 
 alias ls="ls -laG"
+alias tmux='tmux -u'
 cs() { if [ -n "$1" ]; then builtin cd "$1"; else builtin cd ~; fi && ls; }
 
 # if not on NCTUCS workstation
@@ -21,5 +22,34 @@ if [ "`hostname|grep .cs.nctu.edu.tw`" == "" ]; then
     alias zbackup='sudo zbackup'
 fi
 
+
+# Colors!
+
+black="\e[30m"
+red="\e[31m"
+green="\e[32m"
+yellow="\e[33m"
+blue="\e[34m"
+magenta="\e[35m"
+cyan="\e[36m"
+lightgray="\e[37m"
+darkgray="\e[90m"
+lightred="\e[91m"
+lightgreen="\e[92m"
+lightyellow="\e[93m"
+lightblue="\e[94m"
+lightmagenta="\e[95m"
+lightcyan="\e[96m"
+white="\e[97m"
+
+bold="\e[1m"
+reset="\e[0m"
+
 #export PS1="\[\e[34;1m\]\u\[\e[36m\]@\H \[\e[35m\]\w \[\e[32m\]$ \[\e[0m\]"
-export PS1="\[\e[36m\]\u\[\e[m\]\[\e[32m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\] \[\e[33m\]\w\[\e[m\] \[\e[35m\]\\$\[\e[m\] "
+if [ "$(whoami)" = "root" ]; then
+    #export PS1="${lightred}\u${lightgreen}@\h ${lightyellow}\w ${lightmagenta}$ ${reset}"
+    export PS1="${lightred}\u${lightcyan}@\h ${lightmagenta}\w ${lightgreen}$ ${reset}"
+else
+    #export PS1="${lightcyan}\u${lightgreen}@\h ${lightyellow}\w ${lightmagenta}$ ${reset}"
+    export PS1="${lightblue}\u${lightcyan}@\h ${lightmagenta}\w ${lightgreen}$ ${reset}"
+fi
