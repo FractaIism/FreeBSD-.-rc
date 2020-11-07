@@ -3,7 +3,8 @@ bind "TAB:menu-complete"
 export LANG="en_US.UTF-8"   # solves tmux border problems (tmux -u is another solution)
 
 alias ls="ls -laG"
-alias tmux='tmux -u'
+alias tmux="tmux -u"
+alias dos2unix="col -b" # usage: cat windows_file.py | dos2unix > unix_file.py
 cs() { if [ -n "$1" ]; then builtin cd "$1"; else builtin cd ~; fi && ls; }
 
 # if not on NCTUCS workstation

@@ -6,10 +6,11 @@ setenv EDITOR vim
 setenv autorehash
 #setenv LANG "en_US.UTF-8"   # solves tmux border problems (tmux -u is another solution)
 
-alias cs "cd \!* && ls"
-alias quit exit
-alias python python3
-alias tmux 'tmux -u'
+alias cs        "cd \!* && ls"
+alias quit      exit
+alias python    python3
+alias tmux      "tmux -u"
+alias dos2unix  "col -b"    # usage: cat windows_file.py | dos2unix > unix_file.py
 
 bindkey '\t' complete-word-fwd  # cycle through possible options when completion is ambiguous
 
