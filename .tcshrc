@@ -21,14 +21,17 @@ if ( "`hostname | grep .cs.nctu.edu.tw`" != "" ) then	# for NCTUCS workstation
 	# linux/BSD specific aliases
 	if ( "`hostname | grep bsd`" != "" ) then	# for BSD
 		alias nanos 'nano `readlink \!:1`'
-		alias ls "ls -laG"
+        alias la "ls -laG"
+        alias ls "ls -lG"
 	else if ( "`hostname | grep linux`" != "" ) then	# for linux
-		alias ls "ls -lav --color"
+		alias la "ls -lav --color"
+		alias ls "ls -lv --color"
 	endif
 
 else	# for local FreeBSD VM
 
-    alias ls "ls -laG"
+    alias la "ls -laG"
+    alias ls "ls -lG"
     alias shutdown 'sudo shutdown -p now'
     alias poweroff 'sudo poweroff'
     alias reboot 'sudo reboot'
