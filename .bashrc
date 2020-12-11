@@ -5,7 +5,7 @@ export LANG="en_US.UTF-8"   # solves tmux border problems (tmux -u is another so
 alias la="ls -laG"
 alias ls="ls -lG"
 alias tmux="tmux -u"
-alias dos2unix="col -xb" # usage: cat windows_file.py | dos2unix > unix_file.py
+#alias dos2unix="col -xb" # usage: cat windows_file.py | dos2unix > unix_file.py
 cs() { if [ -n "$1" ]; then builtin cd "$1"; else builtin cd ~; fi && ls; }
 
 # if not on NCTUCS workstation

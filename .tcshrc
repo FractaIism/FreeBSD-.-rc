@@ -11,7 +11,7 @@ alias cs        "cd \!* && ls"
 alias quit      exit
 alias python    python3
 alias tmux      "tmux -u"
-alias dos2unix  "col -xb"    # usage: cat windows_file.py | dos2unix > unix_file.py
+#alias dos2unix  "col -xb"    # usage: cat windows_file.py | dos2unix > unix_file.py
 
 bindkey '\t' complete-word-fwd  # cycle through possible options when completion is ambiguous
 
@@ -30,6 +30,7 @@ if ( "`hostname | grep .cs.nctu.edu.tw`" != "" ) then	# for NCTUCS workstation
 
 else	# for local FreeBSD VM
 
+    setenv PATH "${PATH}:/home/fract"
     alias la "ls -laG"
     alias ls "ls -lG"
     alias shutdown 'sudo shutdown -p now'
@@ -43,7 +44,7 @@ else	# for local FreeBSD VM
     alias chmod 'sudo chmod'
     alias chown 'sudo chown'
     alias chgrp 'sudo chgrp'
-    alias zbackup 'sudo zbackup'
+    #alias zfsbak 'sudo zfsbak'
 
 endif
 
