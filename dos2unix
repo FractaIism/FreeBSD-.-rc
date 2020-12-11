@@ -1,0 +1,14 @@
+#!/usr/local/bin/bash
+
+# a nice little utility to convert Windows files to Unix format
+# usage: dos2unix <file1> <file2> ...
+
+files="$@"
+for file in $files; do
+    base=$(basename "$file")
+    tmpfile=$(mktemp "/tmp/dos2unix-$file.XXXXXX")
+    cat "$file" | col -xb > "$tmpfile"
+    cp "$tmpfile" "$file"
+    rm "$tmpfile"
+done
+
