@@ -19,7 +19,7 @@ if ( "`hostname | grep .cs.nctu.edu.tw`" != "" ) then	# for NCTUCS workstation
 
 	setenv PATH "${PATH}:/net/cs/105/0516098:/net/cs/105/0516098/bin"
 	# linux/BSD specific aliases
-	if ( "`hostname | grep bsd`" != "" ) then	# for BSD
+	if ( "`hostname | egrep 'bsd|alumni'`" != "" ) then	# for BSD
 		alias nanos 'nano `readlink \!:1`'
         alias la "ls -laG"
         alias ls "ls -lG"
